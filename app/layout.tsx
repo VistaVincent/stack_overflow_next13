@@ -1,11 +1,11 @@
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from "next/font/google";
 import  React  from 'react';
 import "./globals.css";
 import { ThemeProvider } from '@/context/ThemeProvider';
 
-export const metadata: MetaData = {
+export const metadata: Metadata = {
   title: 'DevFlow',
   description: 'A community driven platform for asking questions',
   icons:{
