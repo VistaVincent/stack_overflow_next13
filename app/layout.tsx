@@ -41,7 +41,12 @@ export default function RootLayout({
                 footerActionLink: 'primary-text-gradient hover:text-primary-500'
               }
             }}>
-          <ThemeProvider>
+          <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+          >
             {children}
           </ThemeProvider>
         </ClerkProvider>

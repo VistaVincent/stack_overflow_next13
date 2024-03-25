@@ -1,5 +1,4 @@
-import React from 'react'
-
+1
 const Home = () => {
   return (
     <div>Home</div>
