@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import Link from "next/link"
-import { Input } from "@/components/ui/input"
 import HomeFilter from "@/components/shared/search/HomeFilter"
 
 const Home = () => {
