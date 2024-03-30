@@ -8,7 +8,7 @@ import HomePageFilter from '@/components/Home/HomePageFilter'
 const HomeFilter = () => {
   return (
     <div className='flex max-sm:flex-col md:flex-col mt-[44px] gap-4'>
-        <div className='background-light800_darkgradient  flex min-h-[56px] grow items-center gap-1 rounded-xl px-4'>
+        <div className='background-light800_dark300  flex min-h-[56px] grow items-center gap-1 rounded-xl px-4'>
               <Image
                   src='/assets/icons/search.svg'
                   alt='search'
@@ -19,7 +19,7 @@ const HomeFilter = () => {
                   type='text'
                   placeholder='Search questions...'
                   value = ''
-                  className='paragraph-regular no-focus placeholder background-light800_darkgradient border-none shadow-none outline-none'/>
+                  className='paragraph-regular no-focus placeholder background-light800_dark300 border-none shadow-none outline-none'/>
         </div>
         <Filter 
             filters={HomePageFilters}
