@@ -46,3 +46,23 @@ export interface BadgeCounts {
 }
 
 export type BadgeCriteriaType = keyof typeof BADGE_CRITERIA;
+
+export interface TagProps{
+  _id: number;
+  name: string;
+  totalQuestions?: number;
+  showCount?: boolean;
+}
+
+export interface QuestionCard{
+  _id:number,
+  title:string,
+  tags:TagProps[],
+  Author:string,
+  AuthorImg:string,
+  days:number,
+  likes: number,
+  comments:number,
+  votes:numver,
+  views:number,
+}
