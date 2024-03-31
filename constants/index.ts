@@ -1,4 +1,4 @@
-import { SidebarLink } from "@/types";
+import { QuestionCard, SidebarLink } from "@/types";
 
 export const themes = [
   { value: "light", label: "Light", icon: "/assets/icons/sun.svg" },
@@ -70,3 +70,50 @@ export const BADGE_CRITERIA = {
     GOLD: 100000,
   },
 };
+
+export const questions: QuestionCard[]= [{
+  _id:1,
+  title:"Efficient Sorting Algorithm Comparision",
+  tags:[{
+    _id:1,
+    name:"java",
+  },
+  {
+    _id:2,
+    name:"NEXT",
+  },
+  {
+    _id:3,
+    name:"java script",
+  },],
+  Author:"Vista Vincent",
+  AuthorImg:'',
+  days:6,
+  likes: 4,
+  comments:6,
+  votes:3,
+  views:100
+},
+{
+  _id:2,
+  title:"Tailwind is noice?",
+  tags:[{
+    _id:1,
+    name:"CSS",
+  },
+  {
+    _id:2,
+    name:"NEXT",
+  },
+  {
+    _id:3,
+    name:"java script",
+  },],
+  Author:"Vista Vincent",
+  AuthorImg:'',
+  days:6,
+  likes: 4,
+  comments:6,
+  votes:3,
+  views:100
+}]

@@ -6,31 +6,10 @@ import HomePageFilter from "@/components/Home/HomePageFilter"
 import { HomePageFilters } from "@/constants/filters"
 import { QuestionCard } from "@/types"
 import QuestionCardComp from "@/components/shared/Question/QuestionCardComp"
+import NoResutsFound from "@/components/shared/NoResutsFound"
 
 
-const dummyQuestions: QuestionCard[]= [{
-  _id:1,
-  title:"Efficient Sorting Algorithm Comparision",
-  tags:[{
-    _id:1,
-    name:"java",
-  },
-  {
-    _id:2,
-    name:"NEXT",
-  },
-  {
-    _id:3,
-    name:"java script",
-  },],
-  Author:"Vista Vincent",
-  AuthorImg:'',
-  days:6,
-  likes: 4,
-  comments:6,
-  votes:3,
-  views:100
-}]
+const questions: QuestionCard[]= [];
 
 const Home = () => {
   return (
@@ -53,10 +32,12 @@ const Home = () => {
             filters={HomePageFilters}
             containerClasses={'max-md:hidden mt-7'}/>
       </div>
-      <div className="mt-8 flex flex-col">
-          {dummyQuestions.map((item)=>(
+      <div className="mt-8 flex flex-col gap-6">
+          {questions.length >0 
+            ? (questions.map((item)=>(
             <QuestionCardComp questionDetails ={item} key={item._id}/>
-          ))}
+            )))
+            :<NoResutsFound/>}
       </div>
         
       
