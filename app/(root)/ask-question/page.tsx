@@ -1,9 +1,14 @@
+import Question from '@/components/shared/forms/Question';
 import React from 'react';
 
 const AskQuestion = () => {
   return (
     <>
-    <div>Ask Question</div>
+    <div>
+      <div>
+        <Question/>
+      </div>
+    </div>
     </>
     
   )
