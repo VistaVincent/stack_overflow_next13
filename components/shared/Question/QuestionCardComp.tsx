@@ -46,7 +46,7 @@ const QuestionCardComp = ({questionDetails}:{questionDetails:QuestionCard}) => {
                         height={16}
                         alt='like'/> 
                     <p className='small-medium text-dark400_light800' >
-                        <span className='small-medium'>{questionDetails.votes}</span> Votes
+                        <span className='small-medium'>{questionDetails.comments}</span> Votes
                     </p>
                 </div>
                 <div className='flex-center flex-wrap gap-1 items-center'>
@@ -56,7 +56,7 @@ const QuestionCardComp = ({questionDetails}:{questionDetails:QuestionCard}) => {
                         height={16}
                         alt='like'/> 
                     <p className='small-medium text-dark400_light800' >
-                        <span className='small-medium'>{questionDetails.votes}</span> Votes
+                        <span className='small-medium'>{questionDetails.views}</span> Votes
                     </p>
                 </div>
             </div>

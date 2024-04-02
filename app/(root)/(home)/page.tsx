@@ -32,12 +32,16 @@ const Home = () => {
             filters={HomePageFilters}
             containerClasses={'max-md:hidden mt-7'}/>
       </div>
-      <div className="mt-8 flex flex-col gap-6">
+      <div className="mt-8 flex flex-col gap-6 ">
           {questions.length >0 
             ? (questions.map((item)=>(
             <QuestionCardComp questionDetails ={item} key={item._id}/>
             )))
-            :<NoResutsFound/>}
+            :(<>
+                <NoResutsFound/>
+              </>
+            )}
+            
       </div>
         
       
