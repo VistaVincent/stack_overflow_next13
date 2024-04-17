@@ -20,12 +20,16 @@ import {
 import { Input } from "@/components/ui/input"
 import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
+import { createQuestion } from '@/lib/actions/question.actions'
+import { useRouter, usePathname } from 'next/navigation'
 
 const type:any = 'create';
 
-const Question = () => {
+const Question = ({mongoUserId}:{mongoUserId:string}) => {
     const editorRef = useRef(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
+    const pathName = usePathname();
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof QuestionSchema>>({
@@ -73,15 +77,25 @@ const Question = () => {
     } 
     
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof QuestionSchema>) {
+    async function onSubmit(values: z.infer<typeof QuestionSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         setIsSubmitting(true);
 
         try{
             // make async call to your API
-        }catch(error) {
+            await createQuestion({
+                title: values.title,
+                content: values.explanation,
+                tags: values.tags,
+                author: JSON.parse(mongoUserId),
+                path: pathName,
+            });
 
+            router.push('/');
+
+        }catch(error) {
+            console.log(error);
         }finally{
             setIsSubmitting(false);
         }
@@ -122,6 +136,8 @@ const Question = () => {
                                             editorRef.current = editor
                                         }}
                                         initialValue=""
+                                        onBlur={field.onBlur}
+                                        onEditorChange={(content) => field.onChange(content)}
                                         init={{
                                         height: 350,
                                         menubar: false,

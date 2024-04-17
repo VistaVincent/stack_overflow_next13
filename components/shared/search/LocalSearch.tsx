@@ -14,7 +14,6 @@ const LocalSearch = ({placeholder}:{placeholder:string}) => {
               <Input 
                   type='text'
                   placeholder={placeholder}
-                  value = ''
                   className='paragraph-regular no-focus placeholder background-light800_dark300 border-none shadow-none outline-none'/>
         </div>
   )

@@ -4,14 +4,16 @@ import LocalSearch from "@/components/shared/search/LocalSearch"
 import { Filter } from "@/components/shared/search/Filter"
 import HomePageFilter from "@/components/Home/HomePageFilter"
 import { HomePageFilters } from "@/constants/filters"
-import { QuestionCard } from "@/types"
 import QuestionCardComp from "@/components/shared/Question/QuestionCardComp"
 import NoResutsFound from "@/components/shared/NoResutsFound"
+import { getQuestions } from "@/lib/actions/question.actions"
 
 
-const questions: QuestionCard[]= [];
+const Home = async () => {
 
-const Home = () => {
+  const result = await getQuestions({});
+  console.log("result is",result);
+
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -33,9 +35,19 @@ const Home = () => {
             containerClasses={'max-md:hidden mt-7'}/>
       </div>
       <div className="mt-8 flex flex-col gap-6 ">
-          {questions.length >0 
-            ? (questions.map((item)=>(
-            <QuestionCardComp questionDetails ={item} key={item._id}/>
+          {result && result.questions.length > 0 ?
+            (result.questions.map((question)=>(
+            <QuestionCardComp 
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              upvotes={question.upvotes}
+              views={question.views}
+              answers={question.answers}
+              createdAt={question.createdAt}
+              />
             )))
             :(<>
                 <NoResutsFound/>
