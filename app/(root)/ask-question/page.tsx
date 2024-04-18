@@ -1,15 +1,14 @@
 import Question from '@/components/shared/forms/Question';
 import { getUserById } from '@/lib/actions/user.actions';
-// import { auth } from '@clerk/nextjs';
-// import { redirect } from 'next/navigation';
+import { auth } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 const AskQuestion = async () => {
 
-  const userId = 'CL123';
-  // const { userId } = auth();
+  const { userId } = auth();
 
-  // if (!userId) redirect('/sign-in');
+  if (!userId) redirect('/sign-in');
 
   const mongoUser = await getUserById({userId});
   console.log("user is..", mongoUser);
@@ -18,7 +17,7 @@ const AskQuestion = async () => {
     <>
     <div>
       <div>
-        <Question mongoUserId = {JSON.stringify(mongoUser)}/>
+        <Question mongoUserId = {JSON.stringify(mongoUser._id)}/>
       </div>
     </div>
     </>

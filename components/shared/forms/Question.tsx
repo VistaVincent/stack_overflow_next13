@@ -81,6 +81,7 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         setIsSubmitting(true);
+        console.log("user id is: ", mongoUserId);
 
         try{
             // make async call to your API
