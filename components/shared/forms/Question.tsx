@@ -22,10 +22,14 @@ import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 import { createQuestion } from '@/lib/actions/question.actions'
 import { useRouter, usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
 
 const type:any = 'create';
 
 const Question = ({mongoUserId}:{mongoUserId:string}) => {
+    const { theme } = useTheme();
+    console.log(theme);
+
     const editorRef = useRef(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
@@ -140,16 +144,20 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
                                         onBlur={field.onBlur}
                                         onEditorChange={(content) => field.onChange(content)}
                                         init={{
-                                        height: 350,
-                                        menubar: false,
-                                        plugins: [
-                                            "advlist", "autolink", "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks", "codesample", "fullscreen", "insertdatetime", "media", "table"
-                                        ],
-                                        toolbar: 'undo redo |' +
-                                        'codesample | bold italic forecolor | alignleft aligncenter ' +
-                                        'alignright alignjustify | bullist numlist',
-                                        content_style: 'body { font-family:Inter; font-size:16px }'
+                                            height: 350,
+                                            menubar: false,
+                                            plugins: [
+                                                "advlist", "autolink", "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks", "codesample", "fullscreen", "insertdatetime", "media", "table"
+                                            ],
+                                            toolbar: 'undo redo |' +
+                                            'codesample | bold italic forecolor | alignleft aligncenter ' +
+                                            'alignright alignjustify | bullist numlist',
+                                            content_style: 'body { font-family:Inter; font-size:16px }',
+                                            skin: (theme === 'dark' ? 'oxide-dark' : 'oxide'),
+                                            content_css: (theme === 'dark' ? 'dark' : 'default'),
+                                            // theme: theme
                                         }}
+                                        key={theme}
                                     />
                                 </FormControl>
                                 <FormDescription className='body-regular mt-2.5 text-light-500'>
@@ -173,7 +181,7 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
                                         {field.value.length > 0 && (
                                             <div className='flex justify-start mt-2.5 gap-1'>
                                                 {field.value.map((tag) => (
-                                                    <Badge key={tag} className='background-light800_dark300 text-light400_light500  rounded-md flex items-center justify-center capitalize' onClick={() => handleTagRemove(tag,field)}>
+                                                    <Badge key={tag} className='background-light800_dark300 text-light400_light500  flex items-center justify-center rounded-md capitalize' onClick={() => handleTagRemove(tag,field)}>
                                                         {tag}
                                                         <Image 
                                                             src = '/assets/icons/close.svg'

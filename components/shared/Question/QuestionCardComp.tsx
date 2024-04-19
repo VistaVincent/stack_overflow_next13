@@ -11,11 +11,12 @@ interface Props{
     tags: ITag[];
     author: IUser;
     upvotes: string;
+    imagePath:string;
     views: string;
     answers: string;
     createdAt: string;}
 
-const QuestionCardComp = ({ _id,title,tags,author,upvotes,views,answers,createdAt }: Props) => {
+const QuestionCardComp = ({ _id,title,tags,author,upvotes,views,answers,imagePath,createdAt }: Props) => {
   return (
     <div className='background-light900_dark200 min-h-[200px] rounded-xl p-[40px] shadow-light-300 dark:shadow-none'>
         <Link 
@@ -31,8 +32,8 @@ const QuestionCardComp = ({ _id,title,tags,author,upvotes,views,answers,createdA
         <div className='mt-6 flex w-full flex-wrap items-center justify-between gap-3'>
             <Link href='/profile/' className='flex-center gap-1'>
                 <Image 
-                    src={'/assets/icons/user.svg'}
-                    width={16}
+                    src={`${(!imagePath) ? '/assets/icons/user.svg':`${imagePath}`}`}
+                    width={16}    
                     height={16}
                     alt='User image'
                     className='invert-colors rounded-lg'/>

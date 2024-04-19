@@ -43,6 +43,7 @@ const Home = async () => {
               title={question.title}
               tags={question.tags}
               author={question.author}
+              imagePath={question.author.picture}
               upvotes={question.upvotes}
               views={question.views}
               answers={question.answers}
