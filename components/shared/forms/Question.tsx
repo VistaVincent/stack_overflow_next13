@@ -28,7 +28,6 @@ const type:any = 'create';
 
 const Question = ({mongoUserId}:{mongoUserId:string}) => {
     const { theme } = useTheme();
-    console.log(theme);
 
     const editorRef = useRef(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,9 +45,7 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
     })
 
     const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>,field: any) => {
-        console.log(e);
-        console.log(field);
-        if(e.key === 'Enter' && field.name === 'tags'){
+        if((e.key === 'Enter' || e.key === ' ') && field.name === 'tags'){
             e.preventDefault();
 
             const tagInput = e.target as HTMLInputElement;
@@ -59,6 +56,13 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
                     return form.setError('tags', {
                         type:'required',
                         message: 'Tag must be less than 15 characters.'
+                    })
+                }
+
+                if(tagValue.length === 1){
+                    return form.setError('tags', {
+                        type:'required',
+                        message: 'Tag must be greater than 1 character.'
                     })
                 }
 
@@ -85,6 +89,7 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         setIsSubmitting(true);
+        console.log('here');
         console.log("user id is: ", mongoUserId);
 
         try{
@@ -195,7 +200,7 @@ const Question = ({mongoUserId}:{mongoUserId:string}) => {
                                         </>
                                 </FormControl>
                                 <FormDescription className='subtle-regular text-light-500 mt-2.5'>
-                                Add up to 5 tags to describe what your question is about. Start typing to see suggestions.
+                                Provide Space or hit Enter To Add Your Tag.
                                 </FormDescription>
                                 <FormMessage className='text-red-500' />
                             </FormItem>

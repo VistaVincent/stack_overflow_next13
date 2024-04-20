@@ -11,7 +11,6 @@ const AskQuestion = async () => {
   if (!userId) redirect('/sign-in');
 
   const mongoUser = await getUserById({userId});
-  console.log("user is..", mongoUser);
 
   return (
     <>
